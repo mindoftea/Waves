@@ -35,7 +35,7 @@ var boat=(
 			f:sqrt(w*w-h*h)/2,
 			mass:500,
 			moi:500,
-			splash:[[0.7,0],[0,0.2]],
+			splash:[[0.8,0],[0,0.3]],
 			collide:function(no,n)
 			{
 				var r,f,v,k,d;
@@ -69,18 +69,14 @@ var boat=(
 					d=magn(r);
 					r=scal(1/d,r);
 					v=[
-						boat.xv-r[1]*boat.omega,
-						boat.yv+r[0]*boat.omega
+						boat.xv-d*r[1]*boat.omega,
+						boat.yv+d*r[0]*boat.omega
 					];
 					v=comb(v,boat.splash[0],boat.splash[1]);
-					//v[0]*=boat.splash[0];
-					//v[1]*=boat.splash[1];
-					//v=dpro(boat.splash,v);
 					f=addi(f,v);
-					//k-=dpro(boat.splash,v);
 					no.f+=k;
-					boat.xf+=f[0]*k;//+v[0];
-					boat.yf+=f[1]*k;//+v[1];
+					boat.xf+=f[0]*k;
+					boat.yf+=f[1]*k;
 					boat.alpha+=xpro(f,r);
 				}
 			}
