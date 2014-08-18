@@ -62,8 +62,6 @@ var boat=(
 					{
 						f[0]+=waves[n-1].y-waves[n].y;
 					}
-					clearLog();
-					log(f[0]);
 					d=magn(f);
 					f=scal(1/d,f);
 					d=magn(r);
